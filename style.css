@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    --tt-body: #121214;
+    --primary-color: #42D3FF;
+    --secondary-color: #FFFFFF;
+    --bg-button: rgba(66, 211, 255, 0.13);
+}
+
+body {
+    background-color: var(--tt-body);
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 8.8rem;
+    line-height: 10.3rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    color: var(--secondary-color);
+}
+
+#timer {
+    display: flex;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+#controls {
+    background-color: var(--bg-button);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.2rem;
+    width: clamp(10rem, 10rem + 30vh, 23rem);
+    max-height: 11rem;
+
+    border-radius: 9999px;
+}
+
+.play svg path,
+.sound-on svg path,
+.pause svg path {
+    fill: var(--primary-color);
+}
+
