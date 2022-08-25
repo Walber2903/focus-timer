@@ -23,6 +23,14 @@ body {
     text-transform: uppercase;
 
     color: var(--secondary-color);
+
+    display: grid;
+    min-height: 100vh;
+}
+
+main {
+    align-self: end;
+    justify-self: center;
 }
 
 #timer {
@@ -49,6 +57,7 @@ button {
     max-height: 11rem;
 
     border-radius: 9999px;
+    margin-top: 1.6rem;
 }
 
 .play svg path,
@@ -57,3 +66,9 @@ button {
     fill: var(--primary-color);
 }
 
+footer {
+    align-self: end;
+    justify-self: end;
+
+    padding: 0 4rem 3.2rem 0;
+}
