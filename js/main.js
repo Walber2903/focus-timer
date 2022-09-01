@@ -1,3 +1,5 @@
+import Sounds from './sounds.js'
+
 const buttonPlay = document.querySelector('.play');
 const buttonPause = document.querySelector('.pause');
 const buttonStop = document.querySelector('.stop');
@@ -10,6 +12,9 @@ const secondsDisplay = document.querySelector('.seconds');
 
 let minutes;
 let seconds;
+let timerTimeout;
+
+const sounds = Sounds();
 
 function resetControls() {
     buttonPause.classList.add('hide');
@@ -34,6 +39,10 @@ buttonPlay.addEventListener('click', () => {
 
     buttonPlay.classList.add('hide');
     buttonPause.classList.remove('hide');
+    buttonStopWatch.classList.add('hide');
+    buttonStop.classList.remove('hide');
+
+    sounds.pressButton();
 
 })
 
@@ -41,13 +50,15 @@ buttonPause.addEventListener('click', () => {
 
     buttonPause.classList.add('hide');
     buttonPlay.classList.remove('hide');
+    clearTimeout(timerTimeout)
+    sounds.pressButton();
 
 })
 
 buttonStopWatch.addEventListener('click', () => {
 
-    minutes = prompt("Quantos minutos de foco voce gostaria?");
-    seconds = prompt("Quantos segundos de foco voce gostaria?");
+    minutes = prompt("Quantos minutos de foco voce gostaria?") || 0;
+    seconds = prompt("Quantos segundos de foco voce gostaria?") || 0;
 
     updateTimerDisplay(minutes, seconds)
 
@@ -59,12 +70,14 @@ buttonStopWatch.addEventListener('click', () => {
 buttonStop.addEventListener('click', () => {
     resetDisplay()
     resetControls()
+    sounds.pressButton();
 })
 
 buttonSoundOn.addEventListener('click', () => {
 
     buttonSoundOn.classList.add('hide');
     buttonSoundOff.classList.remove('hide');
+    sounds.bgAudio.play();
 
 })
 
@@ -72,11 +85,12 @@ buttonSoundOff.addEventListener('click', () => {
 
     buttonSoundOff.classList.add('hide');
     buttonSoundOn.classList.remove('hide');
+    sounds.bgAudio.pause();
 
 })
 
 function countdown() {
-    setTimeout(() => {
+    timerTimeout = setTimeout(() => {
         let seconds = Number(secondsDisplay.textContent)
         let minutes = Number(minutesDisplay.textContent) 
         
@@ -87,7 +101,7 @@ function countdown() {
             if(minutes <= 0) {
                 resetDisplay()
                 resetControls()
-    
+                sounds.timeEnd();
                 return
             }
         }
