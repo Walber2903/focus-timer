@@ -76,8 +76,8 @@ buttonStop.addEventListener('click', () => {
 buttonSoundOn.addEventListener('click', () => {
 
     buttonSoundOn.classList.add('hide');
-    buttonSoundOff.classList.remove('hide');
-    sounds.bgAudio.play();
+    buttonSoundOff.classList.remove('hide'); 
+    sounds.bgAudio.pause();
 
 })
 
@@ -85,7 +85,7 @@ buttonSoundOff.addEventListener('click', () => {
 
     buttonSoundOff.classList.add('hide');
     buttonSoundOn.classList.remove('hide');
-    sounds.bgAudio.pause();
+    sounds.bgAudio.play();
 
 })
 
